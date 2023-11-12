@@ -1,0 +1,22 @@
+{
+    "services": [
+        {
+            "title": "Yard Work"
+        },
+        {
+            "title": "Personal Assistant"
+        },
+        {
+            "title": "Moving"
+        },
+        {
+            "title": "Hair Art",
+            "description": "Lorem Epsum",
+            "images": [
+                {
+                    "src": "./img/main.jpg"
+                }
+            ]
+        }
+    ]
+}

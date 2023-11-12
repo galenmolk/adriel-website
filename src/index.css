@@ -1,3 +1,74 @@
 body {
   background-color: hsl(137, 49%, 45%);
 }
+
+a {
+  font-size: 22px;
+  color: black
+}
+
+a:hover {
+  font-size: 23px;
+  background-color: rgb(177, 177, 177);
+}
+
+.section {
+  background-color: hsl(137, 46%, 35%);
+  border-radius: 1rem;
+  padding: .5rem;
+}
+
+/*
+You can modify various CSS properties to style HTML <a> elements, which represent links in web pages. Here are some of the commonly used CSS properties for styling links:
+
+    Color Properties:
+        color: Sets the text color of the link.
+        text-decoration: Controls the decoration applied to links (e.g., underline, overline, line-through).
+        text-decoration-color: Sets the color of the text decoration.
+        text-decoration-line: Sets the type of text decoration (e.g., underline, overline, line-through, none).
+
+    Background Properties:
+        background-color: Sets the background color behind the link when hovered or active.
+        background-image: Sets a background image for the link.
+        background-size: Specifies the size of the background image.
+
+    Spacing and Layout Properties:
+        padding: Sets the padding around the link text.
+        margin: Sets the margin around the link.
+        border: Defines a border around the link.
+        border-radius: Sets the corner radius of the link.
+        display: Controls the display type (e.g., block, inline, inline-block) of the link.
+
+    Link States:
+        :link: Styles for unvisited links.
+        :visited: Styles for visited links.
+        :hover: Styles when the link is hovered with the mouse pointer.
+        :active: Styles when the link is clicked (active state).
+
+    Cursor Property:
+        cursor: Sets the type of cursor to display when hovering over the link (e.g., pointer for a hand cursor).
+
+    Outline Properties:
+        outline: Defines an outline style for the link when it gains focus.
+
+    Font Properties:
+        font-size: Sets the size of the link text.
+        font-weight: Sets the thickness of the link text.
+        font-style: Defines the style of the link text (e.g., italic).
+
+    Text Properties:
+        text-transform: Transforms the text casing (e.g., uppercase, lowercase, capitalize).
+        letter-spacing: Adjusts the spacing between characters.
+        line-height: Sets the height of the text line.
+
+    Text Shadows and Effects:
+        text-shadow: Adds a shadow to the link text.
+        filter: Applies visual effects like blur or brightness to the link.
+
+    Transition and Animation Properties:
+        transition: Adds smooth transitions for link state changes.
+        animation: Defines animations for links.
+
+    Pseudo-Elements:
+        ::before and ::after: Pseudo-elements can be used to insert content before or after the link for decorative purposes.
+*/
