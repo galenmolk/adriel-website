@@ -209,8 +209,10 @@ a:hover {
      desktop scrollbar, which 100vw counts and the body's width does not. */
   right: clamp(-60px, calc((var(--content) + 24px - 100vw) / 2), 0px);
   top: -120px;
+  /* Stated rather than derived, for the same WebKit reason as .media-circle.
+     This width is a pure length, so it copies straight into height. */
   width: min(420px, 52vw);
-  aspect-ratio: 1;
+  height: min(420px, 52vw);
   border-radius: 50%;
   background: var(--ground-soft);
   z-index: 0;
@@ -600,12 +602,22 @@ a:hover {
   aspect-ratio: 4 / 3;
 }
 
-/* The ring is the page colour, so the circle reads as a knockout. */
+/* Position only. The square shape lives on the static child below, because
+   WebKit — which is what every browser on iOS actually runs, Chrome included —
+   is unreliable about aspect-ratio on an absolutely positioned box, and rendered
+   this as an oval on phones while Blink kept it round. The width here carries a
+   percentage, so it cannot simply be copied into height: a percentage height
+   would resolve against the parent's height instead of its width. */
 .media-circle {
   position: absolute;
   left: -14px;
   bottom: 0;
   width: clamp(148px, 26%, 180px);
+}
+
+/* The ring is the page colour, so the circle reads as a knockout. */
+.media-circle-shape {
+  width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;

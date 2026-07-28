@@ -37,7 +37,9 @@ export default function ServiceSection({ service, onAsk }) {
             <Photo photo={service.photos.main} />
           </div>
           <div className="media-circle">
-            <Photo photo={service.photos.detail} />
+            <div className="media-circle-shape">
+              <Photo photo={service.photos.detail} />
+            </div>
           </div>
         </div>
       </div>
