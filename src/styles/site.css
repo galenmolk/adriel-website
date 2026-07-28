@@ -201,7 +201,13 @@ a:hover {
 
 .hero-circle {
   position: absolute;
-  right: -60px;
+  /* Bleed past the content column only as far as there is room beside it.
+     A flat -60px made the document 60px wider than a phone screen: the page
+     could not scroll sideways (body clips it) but the canvas was still that
+     wide, so the sticky header — correctly 100% of the viewport — stopped short
+     of the screen edge with a bare strip beside it. The 24px slack absorbs a
+     desktop scrollbar, which 100vw counts and the body's width does not. */
+  right: clamp(-60px, calc((var(--content) + 24px - 100vw) / 2), 0px);
   top: -120px;
   width: min(420px, 52vw);
   aspect-ratio: 1;
@@ -488,7 +494,10 @@ a:hover {
   max-width: var(--content);
   margin: 0 auto;
   padding: clamp(36px, 6vw, 76px) var(--gutter);
-  animation: rise 420ms ease both;
+  /* 220ms, not the handoff's 420ms: on a phone you have just tapped a tab and
+     are waiting on it, and at 420ms the settle reads as lag rather than
+     polish. The success panel below keeps 420ms — you see that one once. */
+  animation: rise 220ms ease both;
 }
 
 /* Text left, images right — not alternating. Flush-left consistency is the
