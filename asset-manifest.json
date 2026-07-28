@@ -1,13 +1,24 @@
 {
   "files": {
-    "main.css": "/adriel-website/static/css/main.960d03d7.css",
-    "main.js": "/adriel-website/static/js/main.46315d47.js",
+    "main.css": "/adriel-website/static/css/main.15769f1e.css",
+    "main.js": "/adriel-website/static/js/main.81c0236a.js",
+    "static/media/hair-braiding.jpg": "/adriel-website/static/media/hair-braiding.d61c0e9730edb27b848d.jpg",
+    "static/media/adriel-portrait.jpg": "/adriel-website/static/media/adriel-portrait.126d45a48e4ee36fe794.jpg",
+    "static/media/adriel-portrait.webp": "/adriel-website/static/media/adriel-portrait.2fb0745439fd809ef1ed.webp",
+    "static/media/hair-braiding.webp": "/adriel-website/static/media/hair-braiding.6c258b7c65a246d3114b.webp",
+    "static/media/hair-detail.jpg": "/adriel-website/static/media/hair-detail.636cef24ab9689966ae4.jpg",
+    "static/media/hair-detail.webp": "/adriel-website/static/media/hair-detail.5ca32e2a527db87fc0bc.webp",
+    "static/media/caprasimo-latin.woff2": "/adriel-website/static/media/caprasimo-latin.02a7a4c0f4e484ade7c3.woff2",
+    "static/media/figtree-latin.woff2": "/adriel-website/static/media/figtree-latin.6ca36fd0b60f178bef64.woff2",
+    "static/media/figtree-latin-ext.woff2": "/adriel-website/static/media/figtree-latin-ext.29377ae59c3d8fd22c1f.woff2",
     "index.html": "/adriel-website/index.html",
-    "main.960d03d7.css.map": "/adriel-website/static/css/main.960d03d7.css.map",
-    "main.46315d47.js.map": "/adriel-website/static/js/main.46315d47.js.map"
+    "static/media/caprasimo-latin-ext.woff2": "/adriel-website/static/media/caprasimo-latin-ext.c637ff6dd4d24115a1f3.woff2",
+    "static/media/photo-placeholder.svg": "/adriel-website/static/media/photo-placeholder.0b1dff544e8ee2d18ed3c223a6bfca94.svg",
+    "main.15769f1e.css.map": "/adriel-website/static/css/main.15769f1e.css.map",
+    "main.81c0236a.js.map": "/adriel-website/static/js/main.81c0236a.js.map"
   },
   "entrypoints": [
-    "static/css/main.960d03d7.css",
-    "static/js/main.46315d47.js"
+    "static/css/main.15769f1e.css",
+    "static/js/main.81c0236a.js"
   ]
 }
