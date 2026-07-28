@@ -1,4 +1,5 @@
 import Photo from './Photo';
+import { TreeIcon } from './icons';
 
 export default function ServiceSection({ service, onAsk }) {
   return (
@@ -6,7 +7,7 @@ export default function ServiceSection({ service, onAsk }) {
       <div className="service-grid">
         <div>
           <p className="kicker">
-            <span className="kicker-dot" aria-hidden="true" />
+            <TreeIcon />
             {service.kicker}
           </p>
           <h2 className="service-title">{service.name}</h2>

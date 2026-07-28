@@ -1,5 +1,6 @@
 import { ABOUT } from '../content';
 import Photo from './Photo';
+import { TreeIcon } from './icons';
 
 export default function About() {
   return (
@@ -8,7 +9,7 @@ export default function About() {
         <div className="about-grid">
           <div>
             <p className="kicker kicker-sage">
-              <span className="kicker-dot" aria-hidden="true" />
+              <TreeIcon />
               About
             </p>
             <h2 className="about-title">{ABOUT.title}</h2>

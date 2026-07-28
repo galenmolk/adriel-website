@@ -521,20 +521,19 @@ a:hover {
   color: var(--color-accent-700);
 }
 
-.kicker-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: var(--color-accent);
+/* The kicker text sits at the 700 step for contrast at 13.5px; the tree is a
+   graphic, not text, so it takes the brighter base accent. */
+.kicker svg {
   flex: none;
+  color: var(--color-accent);
 }
 
 .kicker-sage {
   color: var(--color-accent-2-700);
 }
 
-.kicker-sage .kicker-dot {
-  background: var(--color-accent-2-600);
+.kicker-sage svg {
+  color: var(--color-accent-2-600);
 }
 
 .service-title {

@@ -1,5 +1,6 @@
 import { CONTACT_LEDE, CONTACT_TITLE, NEXTDOOR_URL } from '../content';
 import ContactForm from './ContactForm';
+import { TreeIcon } from './icons';
 
 export default function Contact({ topic, onTopicChange }) {
   return (
@@ -7,7 +8,7 @@ export default function Contact({ topic, onTopicChange }) {
       <div className="contact-grid">
         <div>
           <p className="kicker">
-            <span className="kicker-dot" aria-hidden="true" />
+            <TreeIcon />
             Contact
           </p>
           <h2 className="service-title">{CONTACT_TITLE}</h2>
