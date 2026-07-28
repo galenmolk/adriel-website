@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/adriel-website/static/css/main.da3b2a99.css",
-    "main.js": "/adriel-website/static/js/main.929e3d2c.js",
+    "main.css": "/adriel-website/static/css/main.079eb990.css",
+    "main.js": "/adriel-website/static/js/main.26439b03.js",
     "static/media/hair-braiding.jpg": "/adriel-website/static/media/hair-braiding.d61c0e9730edb27b848d.jpg",
     "static/media/adriel-portrait.jpg": "/adriel-website/static/media/adriel-portrait.126d45a48e4ee36fe794.jpg",
     "static/media/adriel-portrait.webp": "/adriel-website/static/media/adriel-portrait.2fb0745439fd809ef1ed.webp",
@@ -14,11 +14,11 @@
     "index.html": "/adriel-website/index.html",
     "static/media/caprasimo-latin-ext.woff2": "/adriel-website/static/media/caprasimo-latin-ext.c637ff6dd4d24115a1f3.woff2",
     "static/media/photo-placeholder.svg": "/adriel-website/static/media/photo-placeholder.0b1dff544e8ee2d18ed3c223a6bfca94.svg",
-    "main.da3b2a99.css.map": "/adriel-website/static/css/main.da3b2a99.css.map",
-    "main.929e3d2c.js.map": "/adriel-website/static/js/main.929e3d2c.js.map"
+    "main.079eb990.css.map": "/adriel-website/static/css/main.079eb990.css.map",
+    "main.26439b03.js.map": "/adriel-website/static/js/main.26439b03.js.map"
   },
   "entrypoints": [
-    "static/css/main.da3b2a99.css",
-    "static/js/main.929e3d2c.js"
+    "static/css/main.079eb990.css",
+    "static/js/main.26439b03.js"
   ]
 }
