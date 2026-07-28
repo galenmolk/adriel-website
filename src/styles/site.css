@@ -1,0 +1,880 @@
+/* Page styles for adrielmolk.com. Built on the Organic design system
+   (styles/organic.css) — every colour, radius and font here is a token from
+   that sheet, or a documented literal from the design handoff.
+
+   The "ground" (page background, panels, hairlines) is not part of the design
+   system: it is set as CSS custom properties by App.jsx from src/theme.js, so
+   the palette stays swappable in one place. */
+
+:root {
+  --gutter: clamp(18px, 4vw, 48px);
+  --content: 1180px;
+  --radius-panel: calc(2 * var(--radius-lg));
+  --header-offset: 88px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  text-wrap: pretty;
+  overflow-x: clip; /* lets the hero circle bleed right without a scrollbar */
+  -webkit-font-smoothing: antialiased;
+  background: var(--ground-bg);
+}
+
+a {
+  color: var(--color-accent-700);
+}
+
+a:hover {
+  color: var(--color-accent-800);
+}
+
+.page {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--color-text);
+  background: var(--ground-bg);
+}
+
+@keyframes greet {
+  0%,
+  2% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  2.78%,
+  100% {
+    opacity: 0;
+    transform: translateY(-0.35em);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* — skip link — */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+  z-index: 99;
+}
+
+.skip-link:focus {
+  left: 16px;
+  color: #fff;
+}
+
+/* — sticky header — */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: var(--ground-nav);
+  border-bottom: 1px solid var(--ground-line);
+}
+
+.site-nav {
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 12px var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 3vw, 32px);
+  flex-wrap: wrap;
+}
+
+.nav-brand {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Scrolls sideways rather than wrapping, so the CTA stays on the first row. */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 2px 0;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-link {
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text);
+  white-space: nowrap;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.nav-link:hover {
+  background: var(--color-accent-2-700);
+  color: #fff;
+}
+
+/* Base terracotta fails contrast at button label sizes — the 700/800 steps
+   of the ramp are required. Same reason for every button on this page. */
+.nav-cta {
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fff;
+  background: var(--color-accent-700);
+  border-color: var(--color-accent-700);
+}
+
+.nav-cta:hover {
+  color: #fff;
+  background: var(--color-accent-800);
+  border-color: var(--color-accent-800);
+}
+
+/* The one media query on the site. Below this the five shortcuts cannot fit,
+   and a sideways-scrolling row just reads as clipped text — so the header drops
+   to the name and the CTA. The Offerings tabs still cover section navigation. */
+@media (max-width: 860px) {
+  .nav-links {
+    display: none;
+  }
+  .site-nav {
+    justify-content: space-between;
+  }
+}
+
+/* — hero — */
+
+.hero {
+  position: relative;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: clamp(48px, 9vw, 104px) var(--gutter) clamp(10px, 1.6vw, 18px);
+}
+
+.hero-circle {
+  position: absolute;
+  right: -60px;
+  top: -120px;
+  width: min(420px, 52vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--ground-soft);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.greet {
+  position: relative;
+  display: block;
+  height: 28px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.greet-stack {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+}
+
+.greet-word {
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 28px;
+  white-space: nowrap;
+  opacity: 0;
+  animation: greet 57.6s infinite;
+}
+
+/* Letter-spacing breaks cursive scripts. */
+.greet-word[dir='rtl'] {
+  letter-spacing: 0;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(38px, 6.4vw, 78px);
+  line-height: 1.07;
+  letter-spacing: -0.02em;
+  /* the negative left margin is an optical-alignment nudge, not a mistake */
+  margin: 0 0 24px -0.028em;
+  max-width: 15ch;
+}
+
+.hero-title span {
+  display: block;
+}
+
+.hero-lede {
+  font-size: 19px;
+  line-height: 1.6;
+  max-width: 54ch;
+  margin: 0 0 28px;
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-hero-primary {
+  text-decoration: none;
+  font-size: 16px;
+  padding: 14px 28px;
+  color: #fff;
+  background: var(--color-accent-800);
+  border-color: var(--color-accent-800);
+}
+
+.btn-hero-primary:hover {
+  color: #fff;
+  background: var(--color-accent-900);
+  border-color: var(--color-accent-900);
+}
+
+.btn-hero-secondary {
+  text-decoration: none;
+  font-size: 16px;
+  padding: 14px 26px;
+  color: var(--color-accent-2-900);
+  background: transparent;
+  border: 2px solid var(--color-accent-2-700);
+}
+
+.btn-hero-secondary:hover {
+  background: var(--color-accent-2-700);
+  color: #fff;
+}
+
+.area {
+  margin: 32px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(86, 99, 63, 0.28);
+  max-width: 46ch;
+}
+
+.area-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-accent-2-800);
+}
+
+.area-label svg {
+  flex: none;
+}
+
+/* A small map rather than a row of chips. The three towns sit roughly where
+   they really are relative to each other (see SERVICE_AREA in content.js), so
+   the trail between them carries actual information.
+
+   MAP_W/MAP_H in ServiceArea.jsx describe the same box in the SVG's own units;
+   the path stretches to fit, and towns and trail stay glued together because
+   both are positioned as percentages of it. */
+.area-map {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  /* Fixed rather than proportional: the towns are a fixed pixel height, so a
+     box that shrank with the viewport would crush them together. This is about
+     as short as three bands can sit without touching. */
+  height: 142px;
+  margin-top: 2px;
+}
+
+.area-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.area-trail {
+  fill: none;
+  stroke: rgba(86, 99, 63, 0.42);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 4 6;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 260ms ease;
+}
+
+.area-map:has(.area-node:hover) .area-trail {
+  stroke: rgba(86, 99, 63, 0.78);
+}
+
+.area-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Opaque, not translucent: at 50% white the dashed trail showed straight
+   through the pills and buzzed. The fill is the same green as the big decorative
+   circle in the hero, so the two shapes read as one family. */
+.area-node {
+  position: absolute;
+  transform: translate(-50%, -50%) translate(var(--mx, 0px), var(--my, 0px));
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 7px 15px;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: var(--ground-soft);
+  border: 1px solid rgba(86, 99, 63, 0.3);
+  cursor: default; /* labels, not links — and never a text I-beam */
+  user-select: none;
+  /* The resting state owns the spring, so letting go of a town is what
+     overshoots and settles. Not links, so no pointer cursor. */
+  transition: transform 520ms cubic-bezier(0.22, 1.35, 0.36, 1),
+    border-color 220ms ease, box-shadow 220ms ease;
+}
+
+/* While a town is being pulled, tracking has to be quick or it feels like
+   treacle — the spring is only for the release. */
+.area-node.is-following {
+  transition: transform 110ms ease-out, border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.area-node:hover {
+  border-color: var(--color-accent-2-700);
+  box-shadow: var(--shadow-sm);
+}
+
+/* — offerings header — */
+
+.offerings {
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: clamp(20px, 3vw, 38px) var(--gutter) clamp(16px, 2.5vw, 26px);
+}
+
+/* Deliberately styled unlike the service kickers so it does not read as a
+   fifth service. The scroll margin is here rather than on the section so that
+   "See the work" lands this label just below the header, not the section's
+   padding. */
+.offerings-title {
+  scroll-margin-top: var(--header-offset);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(86, 99, 63, 0.3);
+  color: color-mix(in srgb, var(--color-text) 66%, transparent);
+}
+
+/* — service tabs — */
+
+.tabs-section {
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 0 var(--gutter) clamp(4px, 1vw, 10px);
+}
+
+.tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tab {
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.2;
+  padding: 11px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(32, 30, 29, 0.38);
+  background: transparent;
+  color: var(--color-text);
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.tab:hover {
+  background: var(--color-accent-2-700);
+  border-color: var(--color-accent-2-700);
+  color: #fff;
+}
+
+.tab[aria-selected='true'] {
+  background: var(--color-accent-700);
+  border-color: var(--color-accent-700);
+  color: #fff;
+}
+
+.tab[aria-selected='true']:hover {
+  background: var(--color-accent-800);
+  border-color: var(--color-accent-800);
+}
+
+/* — service sections — */
+
+.service {
+  scroll-margin-top: var(--header-offset);
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: clamp(36px, 6vw, 76px) var(--gutter);
+  animation: rise 420ms ease both;
+}
+
+/* Text left, images right — not alternating. Flush-left consistency is the
+   design-system direction. */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+}
+
+.kicker-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex: none;
+}
+
+.kicker-sage {
+  color: var(--color-accent-2-700);
+}
+
+.kicker-sage .kicker-dot {
+  background: var(--color-accent-2-600);
+}
+
+.service-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(30px, 4.2vw, 46px);
+  line-height: 1.1;
+  letter-spacing: -0.018em;
+  margin: 0 0 18px -0.028em;
+}
+
+.service-body {
+  margin: 0 0 22px;
+  max-width: 50ch;
+  font-size: 17px;
+  line-height: 1.68;
+  color: color-mix(in srgb, var(--color-text) 80%, transparent);
+}
+
+.taglist {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 26px;
+  padding: 0;
+}
+
+.tag-chip {
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: var(--ground-chip);
+  color: color-mix(in srgb, var(--color-text) 78%, transparent);
+}
+
+/* Borrows the hero's "See the work" treatment — a 2px sage outline. At the
+   design's 1px/42% hairline these got lost against the ground, and they are the
+   only call to action in a service section. */
+.btn-ask {
+  text-decoration: none;
+  font-size: 15px;
+  padding: 12px 22px;
+  background: transparent;
+  border: 2px solid var(--color-accent-2-700);
+  color: var(--color-accent-2-900);
+}
+
+.btn-ask:hover {
+  background: var(--color-accent-2-700);
+  border-color: var(--color-accent-2-700);
+  color: #fff;
+}
+
+.service-media {
+  position: relative;
+  padding-bottom: 56px;
+}
+
+.media-main {
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+/* The ring is the page colour, so the circle reads as a knockout. */
+.media-circle {
+  position: absolute;
+  left: -14px;
+  bottom: 0;
+  width: clamp(148px, 26%, 180px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid var(--ground-bg);
+}
+
+/* `contents` so the <img> inside a <picture> still fills the frame directly. */
+picture {
+  display: contents;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* — about — */
+
+.about {
+  scroll-margin-top: var(--header-offset);
+  max-width: var(--content);
+  margin: clamp(20px, 4vw, 48px) auto 0;
+  padding: 0 var(--gutter);
+}
+
+.about-panel {
+  background: var(--ground-card);
+  border: 1px solid var(--ground-line);
+  border-radius: var(--radius-panel);
+  padding: clamp(28px, 5vw, 64px);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.about-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(28px, 3.8vw, 42px);
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  margin: 0 0 18px -0.028em;
+}
+
+.about-body {
+  margin: 0 0 16px;
+  max-width: 52ch;
+  font-size: 17px;
+  line-height: 1.68;
+  color: color-mix(in srgb, var(--color-text) 80%, transparent);
+}
+
+.about-body:last-child {
+  margin-bottom: 0;
+}
+
+.about-portrait {
+  justify-self: center;
+  width: min(320px, 100%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* — contact — */
+
+.contact {
+  scroll-margin-top: var(--header-offset);
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 100px) var(--gutter);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.contact-lede {
+  margin: 0 0 24px;
+  max-width: 46ch;
+  font-size: 17px;
+  line-height: 1.68;
+  color: color-mix(in srgb, var(--color-text) 80%, transparent);
+}
+
+.contact-elsewhere {
+  margin: 18px 0 0;
+  padding-left: clamp(22px, 3.6vw, 40px); /* lines up with the form panel's padding */
+  font-size: 17px;
+}
+
+.contact-elsewhere a {
+  font-weight: 600;
+}
+
+/* Sage rather than terracotta — a calmer register than the rest of the page. */
+.form-panel {
+  background: var(--ground-form-bg);
+  border: 1px solid var(--ground-form-line);
+  border-radius: var(--radius-panel);
+  padding: clamp(22px, 3.6vw, 40px);
+}
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field > label {
+  font-size: 14.5px;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: var(--color-text);
+}
+
+.field-optional {
+  font-weight: 400;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+.form-panel .input {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(86, 99, 63, 0.32);
+}
+
+.form-panel .input:hover {
+  border-color: rgba(86, 99, 63, 0.55);
+}
+
+.form-panel .input:focus,
+.form-panel .input:focus-visible {
+  border-color: var(--color-accent-2-700);
+}
+
+.select-wrap {
+  position: relative;
+  display: block;
+}
+
+/* Without the chevron the select is indistinguishable from a text input. */
+.select-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.select-chevron {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* At 999px the pill radius clipped the text. */
+.form-panel textarea.input {
+  resize: vertical;
+  min-height: 128px;
+  line-height: 1.6;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.form-error {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--color-accent-800);
+}
+
+.btn-submit {
+  min-height: 48px;
+  font-size: 15px;
+  color: #fff;
+  background: var(--color-accent-2-700);
+  border-color: var(--color-accent-2-700);
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: var(--color-accent-2-800);
+  border-color: var(--color-accent-2-800);
+}
+
+/* Spam trap: real people never fill this in. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.sent {
+  animation: rise 420ms ease both;
+  padding: 12px 0;
+}
+
+.sent-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-accent-2-200);
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.sent-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.sent-body {
+  margin: 0 0 18px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-text) 78%, transparent);
+}
+
+/* — footer — */
+
+.site-footer {
+  border-top: 1px solid var(--ground-line);
+}
+
+.footer-inner {
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 32px var(--gutter) 48px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 32px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14.5px;
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
+}
+
+.footer-brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+
+.footer-name {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+.footer-note {
+  font-size: 14px;
+}
+
+/* No city named here — calling out only Corvallis made Albany and Philomath
+   feel second-tier. */
+.footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
