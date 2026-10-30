@@ -11,6 +11,8 @@
 
 import portraitJpg from './img/adriel-portrait.jpg';
 import portraitWebp from './img/adriel-portrait.webp';
+import landscapingJpg from './img/landscaping-wide.jpg';
+import landscapingWebp from './img/landscaping-wide.webp';
 import hairJpg from './img/hair-braiding.jpg';
 import hairWebp from './img/hair-braiding.webp';
 import hairDetailJpg from './img/hair-detail.jpg';
@@ -52,21 +54,33 @@ export const CONTACT_TITLE = 'How can I help you out?';
 export const CONTACT_LEDE =
   '[PLACEHOLDER] Tell me what you need done and roughly when. I read these myself and I’ll get back to you as soon as I can.';
 
-// `tags` are the small chips under each service paragraph — a handful of short
-// words each, however Adriel wants to use them.
+// Adding a service is a data change: append an entry here and it gets a section,
+// a tab, a header shortcut and a contact-form topic. Nothing else to touch.
+//
+// `navLabel` is an optional shorter label for the header row (defaults to
+// `name`). `body` and `tags` may be left empty until Adriel supplies copy;
+// the section simply omits them. `tags` are the small chips under each
+// service paragraph — a handful of short words each.
 export const SERVICES = [
   {
     slug: 'landscaping',
-    num: '01',
     name: 'Landscaping',
     kicker: 'Yards, gardens and gutters',
     body: '[PLACEHOLDER] Mowing, raking, pruning, weeding, digging and hauling. Gutters and roofs too. I’ve worked as a wildland firefighter, so I have the stamina for the long jobs.',
     tags: ['Yard work', 'Gutters & roofs', 'Odd jobs'],
-    photos: { main: null, detail: null },
+    photos: {
+      main: {
+        src: landscapingJpg,
+        webp: landscapingWebp,
+        width: 680,
+        height: 510,
+        alt: 'Adriel in a bucket hat and gardening gloves, smiling over a tall row of tomato plants with a pair of shears.',
+      },
+      detail: null,
+    },
   },
   {
     slug: 'caregiving',
-    num: '02',
     name: 'Caregiving',
     kicker: 'Steady, patient company',
     body: '[PLACEHOLDER] I’ve been a part-time preschool teacher, and I look after both children and elders. With kids it’s reading, dancing, arts and crafts and creative play. Please let me know if you’d like professional references.',
@@ -75,8 +89,8 @@ export const SERVICES = [
   },
   {
     slug: 'hair',
-    num: '03',
     name: 'Hair art & braiding',
+    navLabel: 'Hair\u00a0art',
     kicker: 'Braids and patterns',
     body: '[PLACEHOLDER] Braiding with a lot of different techniques. I sew in ribbons with an embroidery needle and add gemstones, beads, fresh or dried flowers, or whatever else you’d like. A big one takes about four hours.',
     tags: ['Braids', 'Ribbon work', 'Flowers'],
@@ -99,7 +113,6 @@ export const SERVICES = [
   },
   {
     slug: 'folkdance',
-    num: '04',
     name: 'Folkdance instruction',
     kicker: 'Circles, lines and music',
     body: '[PLACEHOLDER] Bulgarian, Albanian, Palestinian, Israeli, Balkan, English and Scottish traditional dances. I’ve learned hundreds of them travelling around the world. Beginners welcome.',
@@ -109,24 +122,23 @@ export const SERVICES = [
     tags: ['Leading dances', 'Group classes', 'Private lessons'],
     photos: { main: null, detail: null },
   },
+  {
+    slug: 'english',
+    name: 'English lessons',
+    kicker: 'Online, or in person nearby',
+    body: '[PLACEHOLDER]',
+    tags: ['[PLACEHOLDER]', '[PLACEHOLDER]', '[PLACEHOLDER]'],
+    photos: { main: null, detail: null },
+  },
 ];
 
-// Shorter labels for the header shortcut row. "Hair art" holds a non-breaking
-// space so it never splits across two lines.
-export const NAV_LINKS = [
-  { slug: 'landscaping', label: 'Landscaping' },
-  { slug: 'caregiving', label: 'Caregiving' },
-  { slug: 'hair', label: 'Hair art' },
-  { slug: 'folkdance', label: 'Folkdance' },
-];
+// Derived from SERVICES so a new service never needs a second edit.
+export const NAV_LINKS = SERVICES.map((s) => ({
+  slug: s.slug,
+  label: s.navLabel || s.name,
+}));
 
-export const TOPICS = [
-  'Landscaping',
-  'Caregiving',
-  'Hair art & braiding',
-  'Folkdance instruction',
-  'Something else',
-];
+export const TOPICS = [...SERVICES.map((s) => s.name), 'Something else'];
 
 // Drawn from the countries in Adriel's world-music playlists — not a generic
 // list, please don't substitute one.

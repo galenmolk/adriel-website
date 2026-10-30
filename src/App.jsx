@@ -17,7 +17,7 @@ export default function App() {
   // The contact form's subject. Lifted here because narrowing to a service —
   // by tab, by header shortcut, or by an "Ask about …" button — should leave the
   // form already pointed at it. The one piece of cross-section state.
-  const [topic, setTopic] = useState('Landscaping');
+  const [topic, setTopic] = useState(SERVICES[0].name);
 
   const pendingScroll = useRef(null);
 

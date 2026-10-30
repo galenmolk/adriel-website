@@ -1,7 +1,7 @@
 # Adriel Molk — personal business site
 
 A single-page site for Adriel Molk of Corvallis, Oregon: landscaping, caregiving,
-hair art & braiding, and folkdance instruction. Create React App, React 18, plain
+hair art & braiding, folkdance instruction, and English lessons. Create React App, React 18, plain
 CSS — no build-tool changes needed.
 
 ```bash
@@ -37,10 +37,30 @@ colour, type, radius and shadow. Retune it there rather than hard-coding hexes;
 ## Adding Adriel's copy
 
 Everything in `[square brackets]` in `src/content.js` is a placeholder waiting on
-Adriel's own words: the opening paragraph, the four service paragraphs, all the
+Adriel's own words: the opening paragraph, the service paragraphs, all the
 tag chips, both About paragraphs, and the contact intro. Each placeholder names
 its slot and roughly how long it wants to be and nothing more — what goes in it
 is his call. Replace the strings and leave the surrounding structure alone.
+
+## Password protection
+
+`npm run deploy` builds the site, then `scripts/protect.js` replaces
+`build/index.html` with an encrypted copy that asks for a password. Copy
+`.env.example` to `.env` and set `SITE_PASSWORD` (git-ignored; deploy fails
+without it). Commit `.staticrypt.json` — it only holds the salt, and keeping it
+stable means visitors who ticked "remember me" aren't re-prompted every deploy.
+To change the password, edit `.env` and redeploy.
+
+This is a light gate, not real auth: GitHub Pages is static and the repo is
+public, so the source is still readable on GitHub. Remove `node scripts/protect.js`
+from `predeploy` to make the site public again.
+
+## Adding a service
+
+Append an entry to `SERVICES` in `src/content.js`. The section, tab, header
+shortcut and contact-form topic all derive from it. `body` and `tags` can stay
+empty until copy arrives. Also add it to the JSON-LD offer list and meta
+descriptions in `public/index.html`, which can't import from the app.
 
 ## Adding photographs
 

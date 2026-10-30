@@ -11,7 +11,7 @@ export default function ServiceSection({ service, onAsk }) {
             {service.kicker}
           </p>
           <h2 className="service-title">{service.name}</h2>
-          <p className="service-body">{service.body}</p>
+          {service.body && <p className="service-body">{service.body}</p>}
           {service.tags.length > 0 && (
             <ul className="taglist">
               {service.tags.map((tag, i) => (
